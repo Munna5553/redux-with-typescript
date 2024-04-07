@@ -21,7 +21,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(({
     return (
         <div className="relative w-full  flex items-center rounded-md">
             {startIcon && (
-                <span className="absolute left-[10px] text-base cursor-pointer text-black">
+                <span className="absolute left-3 text-base cursor-pointer text-black">
                     {startIcon}
                 </span>
             )}
@@ -29,12 +29,12 @@ const Input = forwardRef<HTMLInputElement, InputProps>(({
                 name={name}
                 type={type}
                 placeholder={placeholder}
-                className={`w-full outline-none text-black rounded-[10px] focus:outline-blue-600 focus:bg-[#F5F5F7] ${className}`}
+                className={`w-full outline-none bg-[#EEE] py-3 text-black rounded-lg focus:outline-blue-600 focus:bg-[#F5F5F7] ${className}`}
                 {...props}
                 ref={ref}
             />
             {endIcon && (
-                <span className="absolute right-[10px] text-base cursor-pointer text-black">
+                <span className="absolute right-3 text-base cursor-pointer text-black">
                     {endIcon}
                 </span>
             )}

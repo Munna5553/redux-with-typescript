@@ -5,7 +5,6 @@ import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { useAppDispatch, useAppSelector } from "../Features/hook"
 import { registerUser } from "../Features/auth/authActions"
-import { Button } from "./Button"
 import { AiOutlineUser } from "react-icons/ai"
 import { BiEnvelope } from "react-icons/bi"
 import { PiEyeBold, PiEyeClosed } from "react-icons/pi"
@@ -16,7 +15,7 @@ const Signup = () => {
     const [visible, setVisible] = useState(false);
     const dispatch = useAppDispatch()
 
-    const { success } = useAppSelector(state => state.auth)
+    const { success, loading } = useAppSelector(state => state.auth)
 
     const navigate = useNavigate()
 
@@ -48,7 +47,7 @@ const Signup = () => {
                                     onChange={handleChange}
                                     onBlur={handleBlur}
                                     value={values.fullname}
-                                    className={`pl-9 pr-3 py-3`}
+                                    className={`pl-9 pr-4`}
                                     startIcon={<AiOutlineUser />}
                                     autoComplete="off"
                                 />
@@ -65,7 +64,7 @@ const Signup = () => {
                                     onChange={handleChange}
                                     onBlur={handleBlur}
                                     value={values.email}
-                                    className={`pl-9 pr-3 py-3`}
+                                    className={`pl-9 pr-4`}
                                     startIcon={<BiEnvelope />}
                                     autoComplete="off"
                                 />
@@ -82,7 +81,7 @@ const Signup = () => {
                                     onChange={handleChange}
                                     onBlur={handleBlur}
                                     value={values.password}
-                                    className={`pl-9 pr-8 py-3`}
+                                    className={`pl-9 pr-9`}
                                     startIcon={<RiKey2Line />}
                                     autoComplete="off"
                                     endIcon={
@@ -94,9 +93,9 @@ const Signup = () => {
                                 </p>
                             </div>
 
-                            <Button type="submit" className="font-medium text-lg py-2 text-white rounded-md bg-blue-800" disabled={isSubmitting}>
-                                {"Sign up"}
-                            </Button>
+                            <button type="submit" className="inline-flex items-center justify-center px-4 font-medium text-lg py-2 text-white rounded-md bg-blue-800" disabled={isSubmitting}>
+                                {loading ? "..." : "Sign up"}
+                            </button>
 
                         </form>
                         <h2 className="text-gray-400 flex gap-2 items-center text-base font-normal">Already have an account <Link to={"/sign-in"} className="text-blue-700 underline ">Sign in</Link></h2>

@@ -5,7 +5,6 @@ import Input from "./Input";
 import { Link, useNavigate } from "react-router-dom";
 import { Login } from "../Features/auth/authActions";
 import { useAppDispatch, useAppSelector } from "../Features/hook";
-import { Button } from "./Button";
 import { PiEyeBold, PiEyeClosed } from "react-icons/pi";
 import { RiKey2Line } from "react-icons/ri";
 import { BiEnvelope } from "react-icons/bi";
@@ -16,7 +15,7 @@ const SignIn = () => {
     const [visible, setVisible] = useState(false);
 
     const dispatch = useAppDispatch()
-    const { success } = useAppSelector(state => state.auth)
+    const { success, loading } = useAppSelector(state => state.auth)
 
     const navigate = useNavigate()
 
@@ -51,7 +50,7 @@ const SignIn = () => {
                                     onChange={handleChange}
                                     onBlur={handleBlur}
                                     value={values.email}
-                                    className={`pl-9 pr-3 py-3`}
+                                    className={`pl-9 pr-4`}
                                     startIcon={<BiEnvelope />}
                                     autoComplete="off"
                                 />
@@ -68,7 +67,7 @@ const SignIn = () => {
                                     onChange={handleChange}
                                     onBlur={handleBlur}
                                     value={values.password}
-                                    className={`pl-9 pr-8 py-3`}
+                                    className={`pl-9 pr-9`}
                                     startIcon={<RiKey2Line />}
                                     autoComplete="off"
                                     endIcon={
@@ -80,9 +79,9 @@ const SignIn = () => {
                                 </p>
                             </div>
 
-                            <Button type="submit" className="font-medium text-lg text-white rounded-md bg-blue-800" disabled={isSubmitting}>
-                                {"Sign in"}
-                            </Button>
+                            <button type="submit" className="inline-flex items-center justify-center px-4 py-3 font-medium text-lg text-white rounded-md bg-blue-800" disabled={isSubmitting}>
+                                {loading ? "..." : "Sign in"}
+                            </button>
 
                         </form>
                         <h2 className="text-gray-400 flex gap-2 text-base font-normal">Already have an account? <Link to={"/sign-up"} className="text-blue-600 underline">Sign up</Link></h2>
